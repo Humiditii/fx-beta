@@ -9,7 +9,7 @@ export class FxRefreshJob {
 
   constructor(private readonly fxService: FxService) { }
 
-  @Cron(CronExpression.EVERY_5_HOURS)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   async refreshRates() {
     this.logger.log('Starting scheduled FX rate refresh...');
     try {
