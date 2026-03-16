@@ -1,0 +1,5 @@
+export const FX_CONSTANTS = {
+  CACHE_TTL_MINUTES: 5,
+  MAX_RETRIES: 3,
+  RETRY_BACKOFF_MS: 1000,
+};
