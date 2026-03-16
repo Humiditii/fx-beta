@@ -139,7 +139,7 @@ export class WalletService {
       const savedTx = await queryRunner.manager.save(transaction);
 
       // 5. Status Transition Log
-      await this.recordStatusTransition(queryRunner.manager, savedTx.id, null, StatusEnum.COMPLETED, 'Initial funding');
+      await this.recordStatusTransition(queryRunner.manager, savedTx.id, StatusEnum.PENDING, StatusEnum.COMPLETED, 'Initial funding');
 
       // 6. Double-entry record: Credit User, Debit System
       const ledgerEntries = [
@@ -246,7 +246,7 @@ export class WalletService {
       const savedTx = await queryRunner.manager.save(transaction);
 
       // 5. Status Log
-      await this.recordStatusTransition(queryRunner.manager, savedTx.id, null, StatusEnum.COMPLETED, 'Conversion completed');
+      await this.recordStatusTransition(queryRunner.manager, savedTx.id, StatusEnum.PENDING, StatusEnum.COMPLETED, 'Conversion completed');
 
       // 6. Ledger entries (Double Entry)
       const entries = [
